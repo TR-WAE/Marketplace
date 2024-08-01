@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-image: url(painting-mountain-lake-with-mountain-background.jpg);
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 2px;
+            /* background-color: #f0f0f0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .container-1 {
+            animation: hahay 3s ease-in-out 1s infinite alternate both;
+        }
+
+        @keyframes hahay {
+            0% {
+                background-color: rgba(255, 255, 0, 0.5);
+                border-top-color: cyan;
+                border-right-color: magenta;
+                border-bottom-color: yellow;
+                border-left-color: khaki;
+            }
+            100% {
+                background-color: rgba(0, 255, 255, 0.5);
+            }
+        }
+        .Log{
+            font-size: 2rem;
+            margin: 0;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .Nama, .Password {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .Nama:hover, .Password:hover{
+            transform: scale(1.03);
+            transition: transform 3s all;
+        }
+
+        .BtnMsk {
+            width: 20%;
+            padding: 10px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .BtnMsk:hover {
+            background-color: deepskyblue;
+        }
+        img{
+            width: auto;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container container-1">
+            <img src="google-logo-9831.png">
+            <p class="Log">Log in</p>
+            <form id="login">
+                <input id="Nama" class="Nama" type="text" placeholder="Nama">
+                <input id="Password" class="Password" type="password" placeholder="Password">
+                <button id="BtnMsk" class="BtnMsk" type="submit"><a href="Menu.html">Masuk</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

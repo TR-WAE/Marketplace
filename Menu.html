@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            padding: 5px;
+        }
+
+        li {
+            margin: 0 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            margin: 0;
+            padding-left: 10px;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .navbar-1, .navbar-2 {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-1 {
+            background-color: #333;
+        }
+
+        .navbar-2 {
+            background-color: #444;
+        }
+
+        .search {
+            width: 200px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .BtnSrc {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .BtnSrc:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .navbar-1 .menu-button {
+            display: none;
+        }
+        .navbar-2 .category {
+            font-size: 1rem;
+            padding: 10px;
+            background-color: #555;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-2 .category:hover,
+        .navbar-2 .category.active {
+            background-color: #007bff;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .navbar-2 .category:active {
+            background-color: #0056b3;
+        }
+        .navbar-1 .category {
+            font-size: 1rem;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-1 .category:hover,
+        .navbar-1 .category.active {
+            background-color: #007bff;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .navbar-1 .category:active {
+            background-color: #0056b3;
+        }
+        @media screen and (max-width: 768px) {
+            .navbar-1, .navbar-2 {
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-content: center;
+                text-align: center;
+            }
+            h4{
+                margin: 10px;
+            }
+            .search {
+                width: 80%;
+                top: 10px;
+            }
+
+            .BtnSrc {
+                padding: 5px 10px;
+                top: 10px;
+            }
+
+            .navbar-1 ul {
+                display: none;
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                flex-direction: column;
+                background-color: #333;
+                position: sticky;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+            }
+
+            .navbar-1 .menu-button {
+                display: block;
+                background-color: #007bff;
+                color: #fff;
+                margin: 10px;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .navbar-1 .menu-button:hover {
+                background-color: #0056b3;
+            }
+
+            .navbar-1 .menu-button.active + ul {
+                display: flex;
+            }
+
+            .navbar-1 li {
+                font-size: 1rem;
+                margin: 10px;
+                padding: 10px;
+                text-align: center;
+                background-color: #444;
+            }
+
+            .navbar-1 li:hover {
+                background-color: rgba(128, 128, 128, 0.7);
+            }
+
+            .navbar-2 ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                gap: 10px;
+                background-color: #444;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-1">
+            <h4 class="title">WebSaya</h4>
+            <form id="Search">
+                <input class="search" type="search" placeholder="Search">
+                <button class="BtnSrc" type="submit">Cari</button>
+            </form>
+            <button class="menu-button">Menu</button>
+            <ul class="ul-1">
+                <li class="category" data-category="books">Home</li>
+                <li class="category" data-category="movies">About</li>
+                <li class="category" data-category="music">Contact</li>
+                <li class="category" data-category="books"><a href="index.html">Back</a></li>
+            </ul>
+        </nav>
+        <nav class="navbar navbar-2">
+            <ul class="ul-2">
+                <li class="category" data-category="books">Books</li>
+                <li class="category" data-category="movies">Movies</li>
+                <li class="category" data-category="music">Music</li>
+                <li class="category" data-category="games">Games</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="card">
+            <img src="unnamed.png" alt="Mountain Painting">
+            <p>Gambar 1</p>
+        </div>
+        <div class="card">
+            <img src="Kejahatan_dan_Hukuman.jpg" alt="Mountain Painting">
+            <p>Gambar 2</p>
+        </div>
+        <div class="card">
+            <img src="Avengers_Endgame_poster.png" alt="Mountain Painting">
+            <p>Gambar 3</p>
+        </div>
+        <div class="card">
+            <img src="painting-mountain-lake-with-mountain-background.jpg" alt="Mountain Painting">
+            <p>Gambar 4</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            this.classList.toggle('active');
+            const menu = document.querySelector('.navbar-1 ul');
+            if (window.innerWidth <= 768) {
+                if (this.classList.contains('active')) {
+                    menu.style.display = 'flex';
+                } else {
+                    menu.style.display = 'none';
+                }
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            const menuButton = document.querySelector('.menu-button');
+            const menu = document.querySelector('.navbar-1 ul');
+            if (!menuButton.contains(event.target) && !menu.contains(event.target) && menu.style.display === 'flex') {
+                menu.style.display = 'none';
+                menuButton.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('.navbar-2 .category').forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.navbar-2 .category').forEach(function(cat) {
+                    cat.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
